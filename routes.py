@@ -11,6 +11,15 @@ def index():
     tasks = models.Task.query.all()
     return render_template('index.html', tasks=tasks)
 
+@app.route('/init')
+def init():
+    print('init: Initializing database')
+    db.create_all()
+    task = models.Task(title='title', date=datetime.utcnow())
+    db.session.add(task)
+    db.session.commit()
+    flash('init DB')
+    return redirect(url_for('index'))
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
