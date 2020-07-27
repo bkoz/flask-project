@@ -4,6 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8u3rouhfkjdsfiluh'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+#
+# Turning on echo will crash the app
+# app.config['SQLALCHEMY_ECHO'] = 'True'
+#
 
 db = SQLAlchemy(app)
 
